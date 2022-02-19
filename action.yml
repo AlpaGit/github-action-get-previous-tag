@@ -1,4 +1,4 @@
-name: 'Get Latest Tag'
+name: 'Get Latest Tag Without v prefix'
 description: 'Get the latest tag from git and outputs that for use in other actions'
 branding:
   icon: 'tag'
