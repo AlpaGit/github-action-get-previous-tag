@@ -24,7 +24,7 @@ exec('git rev-list --tags --max-count=1', (err, rev, stderr) => {
             process.exit(1);
         }
 
-        tag = tag.trim().replace("v", "");
+        tag = tag.trim();
 
         exec(`git log -1 --format=%at ${tag}`, (err, timestamp, stderr) => {
             if (err) {
@@ -34,7 +34,8 @@ exec('git rev-list --tags --max-count=1', (err, rev, stderr) => {
             }
 
             timestamp = timestamp.trim()
-
+			tag = tag.replace("v", "");
+			
             console.log('\x1b[32m%s\x1b[0m', `Found tag: ${tag}`);
             console.log('\x1b[32m%s\x1b[0m', `Found timestamp: ${timestamp}`);
             console.log(`::set-output name=tag::${tag}`);
